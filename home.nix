@@ -36,4 +36,17 @@
   userName = "ftflstwd";
   userEmail = "code@faithfulsteward.tech";
   };
+
+  home.packages = with pkgs; [
+
+      bitwarden-desktop
+      bitwarden-cli
+      fd
+      gh
+      powershell
+      nmap
+      ripgrep
+      vlc
+      wireshark
+    ];
 }
