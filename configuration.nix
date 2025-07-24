@@ -76,16 +76,18 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ftflstwd = {
     isNormalUser = true;
     description = "ftflstwd";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     #  thunderbird
     ];
   };
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -96,6 +98,16 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
+
+  programs.zsh.enable = true;
+
+  programs.zsh.ohMyZsh = {
+  enable = true;
+  plugins = [ "git" ];
+  theme = "agnoster";
+  };
+
+  home-manager.backupFileExtension = "backup";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -112,7 +124,7 @@
     enable = true;
     settings.PermitRootLogin = "no";
     settings.PasswordAuthentication = false;
-  }; 
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -129,4 +141,3 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
-
