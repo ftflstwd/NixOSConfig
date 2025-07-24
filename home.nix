@@ -5,7 +5,7 @@
   # paths it should manage.
   home.username = "ftflstwd";
   home.homeDirectory = "/home/ftflstwd";
-
+  home.shell.enableZshIntegration = true;
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -21,6 +21,14 @@
 
   programs.firefox = {
   enable = true;
+  };
+
+  programs.ghostty = {
+  enable = true;
+  settings = {
+    theme = "tokyonight";
+    font-size = 14;
+    };
   };
 
   programs.git = {
